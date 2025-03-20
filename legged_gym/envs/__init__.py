@@ -38,22 +38,23 @@ if not robot_type:
     print("Error: Please set the ROBOT_TYPE using 'export ROBOT_TYPE=<robot_type>'.")
     sys.exit(1)
 
-if robot_type.startswith("PF"):
-    from .pointfoot.PF.pointfoot import PointFoot
-    from legged_gym.envs.pointfoot.mixed_terrain.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
-    from legged_gym.envs.pointfoot.flat.PF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
-    task_registry.register("pointfoot_rough", PointFoot, PointFootRoughCfg(), PointFootRoughCfgPPO())
-    task_registry.register("pointfoot_flat", PointFoot, PointFootFlatCfg(), PointFootFlatCfgPPO())
-elif robot_type.startswith("WF"):
-    from .pointfoot.WF.pointfoot import PointFoot
-    from legged_gym.envs.pointfoot.mixed_terrain.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
-    from legged_gym.envs.pointfoot.flat.WF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
-    task_registry.register("pointfoot_flat", PointFoot, PointFootFlatCfg(), PointFootFlatCfgPPO())
-elif robot_type.startswith("SF"):
+# if robot_type.startswith("PF"):
+#     from .pointfoot.PF.pointfoot import PointFoot
+#     from legged_gym.envs.pointfoot.mixed_terrain.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
+#     from legged_gym.envs.pointfoot.flat.PF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
+#     task_registry.register("pointfoot_rough", PointFoot, PointFootRoughCfg(), PointFootRoughCfgPPO())
+#     task_registry.register("pointfoot_flat", PointFoot, PointFootFlatCfg(), PointFootFlatCfgPPO())
+# elif robot_type.startswith("WF"):
+#     from .pointfoot.WF.pointfoot import PointFoot
+#     from legged_gym.envs.pointfoot.mixed_terrain.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
+#     from legged_gym.envs.pointfoot.flat.WF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
+#     task_registry.register("pointfoot_flat", PointFoot, PointFootFlatCfg(), PointFootFlatCfgPPO())
+if robot_type.startswith("SF"):
     from .pointfoot.SF.pointfoot import PointFoot
-    from legged_gym.envs.pointfoot.mixed_terrain.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
-    from legged_gym.envs.pointfoot.flat.SF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
+    from .pointfoot.SF.pointfoot_flat_config import PointFootFlatCfg, PointFootFlatCfgPPO
+    from .pointfoot.SF.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
     task_registry.register("pointfoot_flat", PointFoot, PointFootFlatCfg(), PointFootFlatCfgPPO())
+    task_registry.register("pointfoot_rough", PointFoot, PointFootRoughCfg(), PointFootRoughCfgPPO())
 else:
     print("Error: Unknown robot type", robot_type)
     sys.exit(1)

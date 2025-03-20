@@ -1,5 +1,4 @@
-from legged_gym.envs import PointFootRoughCfg, PointFootRoughCfgPPO
-
+from legged_gym.envs.pointfoot.SF.pointfoot_rough_config import PointFootRoughCfg, PointFootRoughCfgPPO
 
 class PointFootFlatCfg(PointFootRoughCfg):
     class env(PointFootRoughCfg.env):
